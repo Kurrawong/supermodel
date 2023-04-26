@@ -1,1 +1,59 @@
-# nothing yet
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qsisup: <https://linked.data.gov.au/def/qsi-supermodel/>
+PREFIX role: <http://www.w3.org/ns/dx/prof/role/>
+PREFIX sdo: <https://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+<https://linked.data.gov.au/def/qsi-supermodel>
+    a
+        owl:Ontology ,
+        prof:Profile ;
+    dcterms:provenance "This Supermodel was created for Queensland Spatial Information's CAM (Cadastre & Addressing Modernisation) project in 2023." ;
+    owl:versionIRI qsisup:0.0.1 ;
+    owl:versionInfo "0.0.1" ;
+    prof:hasResource
+        qsisup:repository ,
+        qsisup:specification ;
+    prof:profileOf <https://linked.data.gov.au/def/fsdf-supermodel> ;
+    sdo:codeRepository "https://github.com/spatial-information-qld/supermodel/"^^xsd:anyURI ;
+    sdo:copyrightHolder <https://linked.data.gov.au/org/qld-resources> ;
+    sdo:copyrightNotice "(c) The State of Queensland (Department of Resources) 2023" ;
+    sdo:copyrightYear "2023"^^xsd:gYear ;
+    sdo:dateCreated "2023-04-26"^^xsd:date ;
+    sdo:dateIssued "2023-04-26"^^xsd:date ;
+    sdo:dateModified "2023-04-26"^^xsd:date ;
+    sdo:description """This is an overarching model - a Supermodel - used to integrate multiple, individual, models together for use within a particular scenario.
+
+This scenario is that of Queensland Cadastre, Addressing, Place Naming and Admin Areas."""@en ;
+    sdo:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+    sdo:name "QSI Supermodel" ;
+.
+
+qsisup:validator
+    a prof:Resource ;
+    dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
+    dcterms:format "text/turtle" ;
+    prof:hasRole role:validation ;
+    prov:wasDerivedFrom <https://linked.data.gov.au/def/fsdf-backbone/validator> ;
+    sdo:description "The Shapes Constraint Language file storing validation rules to assess RDF data against this Profile’s Specification’s Requirements"@en ;
+    sdo:name "QSI Supermodel Validator" ;
+.
+
+qsisup:repository
+    a prof:Resource ;
+    dcterms:conformsTo <https://git-scm.com> ;
+    prof:hasRole <https://data.surroundaustralia.com/def/prof-roles/repository> ;
+    sdo:description "The online version control repository storing this Profile’s content"@en ;
+    sdo:name "QSI Supermodel Code Repository" ;
+.
+
+qsisup:specification
+    a prof:Resource ;
+    dcterms:format "text/html" ;
+    prof:hasRole role:specification ;
+    sdo:description "The normative listing of Requirements for data wishing to conform to this Profile"@en ;
+    sdo:name "QSI Supermodel Specification" ;
+.
